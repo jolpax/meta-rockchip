@@ -6,7 +6,7 @@ require linux-rockchip.inc
 
 inherit freeze-rev local-git
 
-SRCREV = "9fd0a0a7397b8590031d68b4573269eeccd89cb2"
+SRCREV = "497265722ade7c58acc3ab076a7064744cec7086"
 SRC_URI = " \
 	git://github.com/jolpax/ncx-rk-linux.git;protocol=https;branch=ncx/rk3568; \
 	file://${THISDIR}/files/cgroups.cfg \

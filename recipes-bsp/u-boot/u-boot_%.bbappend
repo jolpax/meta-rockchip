@@ -12,11 +12,11 @@ LIC_FILES_CHKSUM = "file://Licenses/README;md5=a2c678cfd4a4d97135585cad908541c6"
 
 inherit freeze-rev local-git
 
-SRCREV = "e3ca3c3805cc60cc9e2fe2a4d78694907b49ee46"
-SRCREV_rkbin = "104659686b734ab041ef958c0abece1a250f48a4"
+SRCREV = "46bbc70db2deee2ae2f544e5cf03caeb95a840c6"
+SRCREV_rkbin = "e7143a74d0950958b1b37fabdd7ed2ca676b66e1"
 SRC_URI = " \
-	git://github.com/jolpax/u-boot.git;protocol=https;branch=u-boot-ncx-rk; \
-	git://github.com/jolpax/mirrors.git;protocol=https;branch=rkbin;name=rkbin;destsuffix=rkbin; \
+	git://github.com/jolpax/u-boot-ncx-rk.git;protocol=https;branch=main; \
+	git://github.com/jolpax/rkbin.git;protocol=https;branch=main;name=rkbin;destsuffix=rkbin; \
 "
 SRC_URI:remove = "file://0001-riscv32-Use-double-float-ABI-for-rv32.patch"
 SRC_URI:remove = "file://0001-riscv-fix-build-with-binutils-2.38.patch"
