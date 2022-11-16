@@ -12,10 +12,10 @@ LIC_FILES_CHKSUM = "file://Licenses/README;md5=a2c678cfd4a4d97135585cad908541c6"
 
 inherit freeze-rev local-git
 
-SRCREV = "46bbc70db2deee2ae2f544e5cf03caeb95a840c6"
+SRCREV = "54a232984f5e911c0f4659a47d1b962c3ab285eb"
 SRCREV_rkbin = "e7143a74d0950958b1b37fabdd7ed2ca676b66e1"
 SRC_URI = " \
-	git://github.com/jolpax/u-boot-ncx-rk.git;protocol=https;branch=main; \
+	git://github.com/jolpax/u-boot-ncx-rk.git;protocol=https;branch=mmc-main; \
 	git://github.com/jolpax/rkbin.git;protocol=https;branch=main;name=rkbin;destsuffix=rkbin; \
 "
 SRC_URI:remove = "file://0001-riscv32-Use-double-float-ABI-for-rv32.patch"
@@ -63,18 +63,18 @@ UBOOT_BINARY = "uboot.img"
 do_compile:append() {
 	cd ${B}
 
-	if [ -e "${B}/prebuilt/${UBOOT_BINARY}" ]; then
+#	if [ -e "${B}/prebuilt/${UBOOT_BINARY}" ]; then
 		bbnote "${PN}: Using prebuilt images."
 		ln -sf ${B}/prebuilt/*.bin ${B}/prebuilt/*.img ${B}/
-	else
-		# Prepare needed files
-		for d in make.sh scripts configs arch/arm/mach-rockchip; do
-			cp -rT ${S}/${d} ${d}
-		done
+#	else
+#		# Prepare needed files
+#		for d in make.sh scripts configs arch/arm/mach-rockchip; do
+#			cp -rT ${S}/${d} ${d}
+#		done
 
 		# Pack rockchip loader images
-		./make.sh
-	fi
+#		./make.sh
+#	fi
 
 	ln -sf *_loader*.bin "${RK_LOADER_BIN}"
 

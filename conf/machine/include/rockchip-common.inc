@@ -159,7 +159,7 @@ gen_rkupdateimg() {
 		echo "Skip packing Rockchip update image."
 		return
 	fi
-
+	
 	IMAGE="${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.wic"
 	if [ ! -f "${IMAGE}" ];then
 		echo "${IMAGE} not found."
@@ -167,15 +167,30 @@ gen_rkupdateimg() {
 	fi
 
 	cd "${IMGDEPLOYDIR}"
-
-	RK_IMAGES="loader.bin uboot.env uboot.img trust.img boot.img"
+	echo "zahid1"
+	echo "${PWD}"
+	RK_IMAGES="loader.bin uboot.env uboot.img trust.img boot.img misc.img env.img firmware_update.img"
 
 	# Create temporary symlinks, because the tool would crash with abs pathes
 	for img in ${RK_IMAGES};do
 		f="${DEPLOY_DIR_IMAGE}/${img}"
 		[ -f "${f}" ] && ln -sf "${f}" .
 	done
-
+	
+	rm -rf boot_a.img
+	rm -rf boot_b.img
+	rm -rf uboot_a.img
+	rm -rf uboot_b.img
+	rm -rf rootfs_a.img
+	rm -rf rootfs_b.img
+    ln -s /home/rnd/Documents/slot-a/boot.img boot_a.img
+	ln -s /home/rnd/Documents/slot-b/boot.img boot_b.img
+    #ln -s boot.img boot_b.img
+    ln -s  /home/rnd/Documents/slot-a/uboot.img uboot_a.img
+    ln -s /home/rnd/Documents/slot-b/uboot.img  uboot_b.img
+	ln -s rootfs.img rootfs_a.img
+	ln -s rootfs.img rootfs_b.img
+   
 	OUT="${IMAGE_LINK_NAME}.package-file"
 	ln -sf "${OUT}" package-file
 
@@ -195,6 +210,7 @@ gen_rkupdateimg() {
 				echo "rootfs.img" >> "${OUT}"
 				;;
 			*)
+				echo "${NAME}.img" >> "${OUT}"
 				echo "${NAME}.img" >> "${OUT}"
 				;;
 		esac

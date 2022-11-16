@@ -1,0 +1,18 @@
+# Copyright (c) 2019, Fuzhou Rockchip Electronics Co., Ltd
+# Released under the MIT license (see COPYING.MIT for the terms)
+#
+# long-description: Creates a GPT disk image for Rockchip boards
+
+# 0~32K: gpt
+bootloader --ptable gpt
+part --source rawcopy --sourceparams="file=idblock.img" --align 32 --no-table
+part --source rawcopy --sourceparams="file=uboot.img" --part-name uboot_a --align 8192  --fixed-size 8
+part --source rawcopy --sourceparams="file=uboot.img" --part-name uboot_b --align 8192  --fixed-size 8
+part --source rawcopy --sourceparams="file=trust.img" --part-name trust
+part --source rawcopy --sourceparams="file=boot.img" --part-name boot_a
+part / --source rootfs --fstype ${RK_ROOTFS_TYPE} --part-name rootfs_a --uuid ${RK_ROOTDEV_UUID} --align 1024  --extra-space 500M
+part --source rawcopy --sourceparams="file=misc.img" --part-name misc
+part --source rawcopy --sourceparams="file=boot.img" --part-name boot_b
+part / --source rootfs --fstype ${RK_ROOTFS_TYPE} --part-name rootfs_b --uuid ${RK_ROOTDEV_UUID} --align 1024  --extra-space 500M
+
+

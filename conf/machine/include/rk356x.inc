@@ -10,4 +10,6 @@ MALI_VERSION := "g2p0"
 RK_ISP_VERSION := "2.1"
 
 PREFERRED_VERSION_linux-rockchip := "4.19%"
+#PREFERRED_VERSION_linux-rockchip := "5.10%"
 LINUXLIBCVERSION := "4.19-custom%"
+#LINUXLIBCVERSION := "5.10-custom%"
