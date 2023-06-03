@@ -167,7 +167,7 @@ gen_rkupdateimg() {
 	fi
 
 	cd "${IMGDEPLOYDIR}"
-	echo "zahid1"
+	echo "jolpax"
 	echo "${PWD}"
 	RK_IMAGES="loader.bin uboot.env uboot.img trust.img boot.img misc.img env.img firmware_update.img"
 
@@ -183,11 +183,14 @@ gen_rkupdateimg() {
 	rm -rf uboot_b.img
 	rm -rf rootfs_a.img
 	rm -rf rootfs_b.img
-    ln -s /home/rnd/Documents/slot-a/boot.img boot_a.img
-	ln -s /home/rnd/Documents/slot-b/boot.img boot_b.img
-    #ln -s boot.img boot_b.img
-    ln -s  /home/rnd/Documents/slot-a/uboot.img uboot_a.img
-    ln -s /home/rnd/Documents/slot-b/uboot.img  uboot_b.img
+    #ln -s /home/rnd/Documents/slot-a/boot.img boot_a.img
+	#ln -s /home/rnd/Documents/slot-b/boot.img boot_b.img
+    ln -s boot.img boot_a.img
+	ln -s boot.img boot_b.img
+    #ln -s  /home/rnd/Documents/slot-a/uboot.img uboot_a.img
+    #ln -s /home/rnd/Documents/slot-b/uboot.img  uboot_b.img
+	ln -s uboot.img uboot_a.img
+	ln -s uboot.img uboot_b.img	
 	ln -s rootfs.img rootfs_a.img
 	ln -s rootfs.img rootfs_b.img
    
